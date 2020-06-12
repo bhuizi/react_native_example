@@ -8,7 +8,10 @@ TouchableHighlight,
 ActivityIndicator
 } from 'react-native';
 
-function GitHub() {
+import { getBio } from '../../api';
+import { ROUTES } from '../../enum';
+
+function GitHub({navigation}) {
   const [store, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case 'USER_NAME':
@@ -23,8 +26,15 @@ function GitHub() {
         };
       case 'ERROR':
         return {
-          ...state,
+          userName: '',
+          isLoading: false,
           error: action.payload
+        };
+      case 'RESET':
+        return {
+          userName: '',
+          isLoading: false,
+          error: false
         };
       default:
         throw new Error();
@@ -40,8 +50,18 @@ function GitHub() {
   }
 
   function handleSubmit() {
-      dispatch({type: 'IS_LOADING'});
-      console.log('submitted', store.userName)
+      dispatch({type: 'IS_LOADING', payload: true});
+      getBio(store.userName)
+        .then((res) => {
+          if(res.message === 'Not Found') {
+            dispatch({type: 'ERROR', payload: 'User not found.'})
+          } else {
+            navigation.navigate(`${ROUTES.DASHBOARD}`, {
+              userBio: res
+            })
+            dispatch({type: 'RESET'})
+          }
+        })
   }
   
     return (
@@ -70,7 +90,6 @@ function GitHub() {
       flex: 1,
       justifyContent: 'center',
       padding: 30,
-      marginTop: 65,
     },
     title: {
       color: '#fff',
