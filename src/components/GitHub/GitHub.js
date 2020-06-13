@@ -78,6 +78,19 @@ function GitHub({navigation}) {
             underlayColor={"#fff"}>
             <Text style={styles.buttonText}>SEARCH</Text>
         </TouchableHighlight>
+        <ActivityIndicator
+          animating={store.isLoading}
+          color={"#111"}
+          size={"large"}>
+          </ActivityIndicator>
+          {
+            store.error ? 
+            <View style={styles.error}>
+              <Text>{store.error}</Text>
+            </View>
+            : 
+            <View></View>
+          }
       </View>
     );
   }
@@ -123,5 +136,11 @@ function GitHub({navigation}) {
       justifyContent: 'center',
       marginBottom: 10,
       marginTop: 10,
-    }
+    },
+    error: {
+      alignSelf: 'center',
+      color: '#fff',
+      fontSize: 18
+    },
+
   });

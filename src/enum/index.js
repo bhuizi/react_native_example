@@ -1,5 +1,8 @@
 export const ROUTES = {
     GITHUB: 'GitHub',
+    DASHBOARD: 'Dashboard',
     PROFILE: 'Profile',
-    DASHBOARD: 'Dashboard'
+    REPOS: 'Repos',
+    NOTES: 'Notes',
+
 }
