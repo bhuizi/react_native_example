@@ -30,6 +30,7 @@ function makeBackground(btn) {
     }
     return obj;
 }
+
 function Dashboard({route, navigation}) {
     const { userInfo } = route.params;
     

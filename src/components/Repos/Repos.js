@@ -10,8 +10,9 @@ import {
 import Badge from '../Badge';
 import Separator from '../Separator';
 import { getRepos } from '../../api';
+import { ROUTES } from '../../enum';
 
-function Repos({route}) {
+function Repos({route, navigation}) {
     const { userInfo } = route.params;
     const [ repos, setRepos ] = useState([]);
 
@@ -27,7 +28,9 @@ function Repos({route}) {
                 <View key={i}>
                     <View style={styles.rowContainer}>
                         <TouchableHighlight
-                            onPress={() => {console.log(repos[i].html_url)}}
+                            onPress={() => navigation.navigate(`${ROUTES.WEBVIEW}`, {
+                                url: repos[i].html_url
+                            })}
                             underlayColor="transparent"
                         >
                             <Text style={styles.name}>{repos[i].name}</Text>

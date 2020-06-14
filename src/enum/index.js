@@ -4,5 +4,5 @@ export const ROUTES = {
     PROFILE: 'Profile',
     REPOS: 'Repos',
     NOTES: 'Notes',
-
+    WEBVIEW: 'WebView'
 }

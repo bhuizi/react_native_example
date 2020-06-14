@@ -80,8 +80,8 @@ function GitHub({navigation}) {
         </TouchableHighlight>
         <ActivityIndicator
           animating={store.isLoading}
-          color={"#111"}
-          size={"large"}>
+          color="#111"
+          size="large">
           </ActivityIndicator>
           {
             store.error ? 
