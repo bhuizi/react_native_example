@@ -31,22 +31,26 @@ function makeBackground(btn) {
     return obj;
 }
 function Dashboard({route, navigation}) {
-    const { userBio } = route.params;
+    const { userInfo } = route.params;
     
     return(
         <View style={styles.container}>
             <Image style={styles.image}
-            source={{uri: userBio.avatar_url}}/>
+            source={{uri: userInfo.avatar_url}}/>
             <TouchableHighlight
                 style={makeBackground(1)}
-                onPress={() => navigation.navigate(`${ROUTES.PROFILE}`)}
+                onPress={() => navigation.navigate(`${ROUTES.PROFILE}`, {
+                    userInfo
+                })}
                 underlayColor="#88DAF5"
             >
                 <Text style={styles.buttonText}>View Profile</Text>
             </TouchableHighlight>
             <TouchableHighlight
                 style={makeBackground(2)}
-                onPress={() => navigation.navigate(`${ROUTES.REPOS}`)}
+                onPress={() => navigation.navigate(`${ROUTES.REPOS}`, {
+                    userInfo
+                })}
                 underlayColor="#88DAF5"
             >
                 <Text style={styles.buttonText}>View Repos</Text>

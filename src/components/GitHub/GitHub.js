@@ -57,7 +57,7 @@ function GitHub({navigation}) {
             dispatch({type: 'ERROR', payload: 'User not found.'})
           } else {
             navigation.navigate(`${ROUTES.DASHBOARD}`, {
-              userBio: res
+              userInfo: res
             })
             dispatch({type: 'RESET'})
           }
