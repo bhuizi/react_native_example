@@ -58,7 +58,9 @@ function Dashboard({route, navigation}) {
             </TouchableHighlight>
             <TouchableHighlight
                 style={makeBackground(3)}
-                onPress={() => navigation.navigate(`${ROUTES.NOTES}`)}
+                onPress={() => navigation.navigate(`${ROUTES.NOTES}`, {
+                    userInfo
+                })}
                 underlayColor="#88DAF5"
             >
                 <Text style={styles.buttonText}>View Notes</Text>
